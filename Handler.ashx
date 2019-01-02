@@ -213,7 +213,7 @@ public class Handler : IHttpHandler
         }
         if (!string.IsNullOrEmpty(context.Request.QueryString["lx"]))  // 类型
         {
-            priceInfoWhere += " and lxName=" + context.Request.QueryString["lx"].ToString() + " ";
+            priceInfoWhere += " and lxName='" + context.Request.QueryString["lx"].ToString() + "' ";
         }
 
         string pageSize = "100000";
