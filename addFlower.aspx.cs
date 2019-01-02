@@ -28,14 +28,6 @@ public partial class addFlower : System.Web.UI.Page
         drp2.DataSource = ds.Tables[0];
         drp2.DataBind();
     }
-    //private void BindDrp3 ()
-    //{
-    //    DataSet ds = DBHelperAccess.GetList("select * from type where lb=3");
-    //    drp3.DataValueField = "id";
-    //    drp3.DataTextField = "mc";
-    //    drp3.DataSource = ds.Tables[0];
-    //    drp3.DataBind();
-    //}
 
     /// <summary>
     /// 绑定数据
@@ -47,8 +39,8 @@ public partial class addFlower : System.Web.UI.Page
         drp1.SelectedValue = dataSet.Tables[0].Rows[0]["lx"].ToString();
         drp2.SelectedValue = dataSet.Tables[0].Rows[0]["jb"].ToString();
 
-        string mc = txt_mc.Value = dataSet.Tables[0].Rows[0]["mc"].ToString();
-        string gg = txt_gg.Value = dataSet.Tables[0].Rows[0]["gg"].ToString();
+        txt_mc.Value = dataSet.Tables[0].Rows[0]["mc"].ToString();
+        txt_gg.Value = dataSet.Tables[0].Rows[0]["gg"].ToString();
 
         ck_tj.Checked = Convert.ToBoolean(dataSet.Tables[0].Rows[0]["tj"] ?? false);
     }
@@ -88,11 +80,6 @@ public partial class addFlower : System.Web.UI.Page
             Response.Write("<script>alert('鲜花规格不能为空！')</script>");
             return;
         }
-        //else if (cd == "")
-        //{
-        //    Response.Write("<script>alert('鲜花产地不能为空！')</script>");
-        //    return;
-        //}
 
         if (UpImg() == 0)
         {
@@ -199,5 +186,10 @@ public partial class addFlower : System.Web.UI.Page
                 return 0;
             }
         }
+    }
+
+    protected void drp1_TextChanged (object sender, EventArgs e)
+    {
+        BindDrp2();
     }
 }
