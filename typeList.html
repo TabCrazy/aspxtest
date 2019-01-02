@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>管理首页-分类管理</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+    </head>
+    <body>
+        <div class="header"><span>陈砦花卉鲜花走势管理系统</span></div>
+        <div class="main">
+            <div class="sidebar">
+                <div class="menu">
+                    <ul>
+                        <li><a href="./typeList.html">分类管理</a></li>
+                        <li><a href="./flowerMange.html">鲜花管理</a></li>
+                        <li><a href="./index.html">每日报价</a></li>
+                        <li><a href="./remarks.html">备注管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="crumbs">分类管理</div>
+                <div class="cont-box">
+                    <div class="list-filter-bar">
+                        <div class="label">请选择类型</div>
+                        <div class="inpu">
+                            <select class="selectsty">
+                                <!-- 数据类别添加的 鲜花类型 （一级类） 如：鲜切花、盆花、苗木 -->
+                                <option value="1">全部</option>
+                                <option value="2">鲜切花</option>
+                                <option value="3">盆花</option>
+                                <option value="4">苗木</option>
+                            </select>
+                            <select class="selectsty">
+                                <!-- 子类 or 级别 -->
+                                <option value="1">全部</option>
+                                <option value="2">子类</option>
+                                <option value="3">级别</option>
+                            </select>
+                        </div>
+                        <a href="./addType.html">添加分类</a>
+                    </div>
+                    <div class="list-wrap">
+                        <div class="table-cus">
+                            <div class="table-row head">
+                                <div class="table-col order">序号</div>
+                                <div class="table-col lname">名称</div>
+                                <div class="table-col opt">操作</div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col order">1</div>
+                                <div class="table-col lname">鲜切花</div>
+                                <div class="table-col opt">
+                                    <a href="###">编辑</a>
+                                    <a href="###">删除</a>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col order">2</div>
+                                <div class="table-col lname">鲜切花</div>
+                                <div class="table-col opt">
+                                    <a href="###">编辑</a>
+                                    <a href="###">删除</a>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col order">3</div>
+                                <div class="table-col lname">鲜切花</div>
+                                <div class="table-col opt">
+                                    <a href="###">编辑</a>
+                                    <a href="###">删除</a>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="table-col order">4</div>
+                                <div class="table-col lname">鲜切花</div>
+                                <div class="table-col opt">
+                                    <a href="###">编辑</a>
+                                    <a href="###">删除</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

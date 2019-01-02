@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,ol,li,dl,dt,dd {
+    list-style-type: none;
+}
+html, body {
+    height: 100%;
+    font-size: 12px;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
+.header {
+    width: 100%;
+    height: 50px;
+    background: #161616;
+    line-height: 50px;
+    color: #fff;
+    font-size: 18px;
+}
+.header span {
+    padding: 0 0 0 12px;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: relative;
+}
+.menu {
+    padding: 15px;
+}
+.menu li {
+    line-height: 30px;
+}
+.menu li a {
+    display: block;
+    line-height: 30px;
+    padding: 0 0 0 8px;
+}
+.menu li a:hover {
+    color: #fff;
+    background: #161616
+}
+.sidebar {
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    position: absolute;
+}
+.content {
+    margin: 0 0 0 260px;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+.crumbs {
+    border-bottom:1px solid #ddd;
+    line-height: 40px;
+    padding: 0 0 0 10px;
+    font-weight: bold;
+}
+.cont-box {
+    padding: 20px;
+}
+.form-item {
+    position: relative;
+    margin: 15px 0;
+}
+.form-item .label {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    width: 100px;
+    text-align: right;
+}
+.form-item .inpu {
+    padding:0 0 0 110px;
+}
+.list-filter-bar {
+    height: 35px;
+}
+.list-filter-bar .label {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 8px 0 0;
+}
+.list-filter-bar .filter {
+    padding: 0 10px;
+    cursor: pointer;
+}
+.list-filter-bar .inpu {
+    float: left;
+}
+.list-filter-bar a {
+    display: block;
+    padding: 5px 20px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    float: right;
+}
+.list-filter-bar a.btn-left {
+    float: left;
+}
+.list-wrap {
+    padding: 30px 0;
+}
+/*表单公共样式*/
+.selectsty, .inputsty {
+    width: 300px;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 5px;
+}
+.selectsty.small {
+    width: 150px;
+}
+.selectsty.mini {
+    width: 100%;
+}
+.inputsty.samll {
+    width: 100%;
+    height: 25px;
+}
+.butsty {
+    padding: 8px 30px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    background: #ddd;
+    outline: 0;
+}
+/* 表格样式 */
+.table-cus {
+    width:100%;
+    border-top: 1px solid #ddd;
+}
+.table-row {
+    border-bottom: 1px solid #ddd;
+    height: 40px;
+    line-height: 40px;
+}
+.table-row.head {
+    font-weight: bold;
+    background: #eee;
+}
+.table-col {
+    float: left;
+    padding: 0 5px;
+}
+.table-col.order {
+    width: 10%;
+}
+.table-col.lname {
+    width: 80%;
+}
+.table-col.opt {
+    width: 10%;
+}
+.table-col.xname {
+    width: 15%;
+}
+.table-col.level {
+    width: 15%;
+}
+.table-col.price {
+    width: 15%;
+}
+.table-col.atrend {
+    width: 15%;
+}
+.table-col.sname {
+    width: 15%;
+}
+.table-col.pic {
+    width: 15%;
+}
+.table-col.pic img {
+    width: 40px;
+    height: 30px;
+    position: relative;
+    top: 5px;
+}
+.table-col.spec {
+    width: 15%;
+}
+.table-col.home {
+    width: 15%;
+}
+.table-col.remarks {
+    width: 15%;
+}
+.table-col.price .inputsty {
+    position: relative;
+    top: 2px;
+}
+.table-col.opt a {
+    margin: 0 10px 0 0;
+}
+div.line {
+    height: 0;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+.login-wrap-bg {
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    background: url('../img/bg.jpg') no-repeat center center;
+    background-size: 100%;
+    /* filter: blur(5px); */
+}
+.main_login {
+    width: 470px;
+    height: 200px;
+    margin: 180px auto;
+    /* border: 1px solid #ddd; */
+    padding: 20px 0;
+    border-radius: 0px;
+    /* box-shadow: 1px 1px 1px #ddd; */
+    background: rgba(255, 255, 255, 0.5) ;
+}
+.main_login input {
+    background: none;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 0 0 1px 0;
+    outline: 0;
+}
+.main_login .butsty {
+    background: #161616;
+    color: #fff;
+    border: 0;
+    outline: 0;
+}

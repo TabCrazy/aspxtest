@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "webseriver-htmlcss", ".", "{DA806E40-FE68-4027-9409-FD3966FFF5C3}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52719"
+		Debug.AspNetCompiler.PhysicalPath = "E:\鲜花项目\webseriver-htmlcss\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52719\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52719"
+		Release.AspNetCompiler.PhysicalPath = "E:\鲜花项目\webseriver-htmlcss\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52719\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52719"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA806E40-FE68-4027-9409-FD3966FFF5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA806E40-FE68-4027-9409-FD3966FFF5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4EA3FED-1380-4B95-B073-8381E8538FF8}
+	EndGlobalSection
+EndGlobal

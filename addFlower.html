@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>管理首页-添加鲜花</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+    </head>
+    <body>
+        <div class="header"><span>陈砦花卉鲜花走势管理系统</span></div>
+        <div class="main">
+            <div class="sidebar">
+                <div class="menu">
+                    <ul>
+                        <li><a href="./typeList.html">分类管理</a></li>
+                        <li><a href="./flowerMange.html">鲜花管理</a></li>
+                        <li><a href="./index.html">每日报价</a></li>
+                        <li><a href="./remarks.html">备注管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="crumbs">添加鲜花</div>
+                <div class="cont-box">
+                    <div class="form-item">
+                        <div class="label">鲜花类型</div>
+                        <div class="inpu">
+                            <select class="selectsty">
+                                <option value="1">鲜切花</option>
+                                <option value="2">盆切花</option>
+                                <option value="3">苗木</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label">鲜花子类</div>
+                        <div class="inpu">
+                            <!-- 注：子类数据来源鲜花类型选择而不同 -->
+                            <select class="selectsty">
+                                <option value="1">春花</option>
+                                <option value="2">夏花</option>
+                                <option value="3">秋花</option>
+                                <option value="4">冬花</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label">鲜花名称</div>
+                        <div class="inpu">
+                            <input class="inputsty" type="text">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label">规格(支/扎)</div>
+                        <div class="inpu">
+                            <input class="inputsty" type="text">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label">鲜花图片</div>
+                        <div class="inpu">
+                            <input class="inputsty" type="file">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label"></div>
+                        <div class="inpu">
+                            <button class="butsty">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
