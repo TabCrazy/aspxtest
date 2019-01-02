@@ -118,6 +118,9 @@ a {
     border-radius: 3px;
     padding: 0 5px;
 }
+.inputsty[type=file] {
+    border: 0;
+}
 .selectsty.small {
     width: 150px;
 }
