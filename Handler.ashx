@@ -101,7 +101,9 @@ public class Handler : IHttpHandler
             id = "0";
         }
 
-        string sql = "select id,mc,lb from type where lx ='" + id+"'";
+        string sql = "select id,lxmc,lx from type where lx ='" + id+"'";
+
+        //string sql = "select id,mc,lb from type where lx ='" + id+"'";
         DataSet ds = DBHelperAccess.GetList(sql);
 
         if (ds == null || ds.Tables.Count == 0)
