@@ -10,6 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="header"><span>陈砦花卉鲜花走势管理系统</span></div>
         <div class="main">
             <div class="sidebar">
                 <div class="menu">
