@@ -29,7 +29,7 @@
                         <div class="form-item">
                             <div class="label">鲜花类型</div>
                             <div class="inpu">
-                                <asp:DropDownList runat="server" class="selectsty" ID="drp1"></asp:DropDownList>
+                                <asp:DropDownList runat="server" class="selectsty" ID="drp1" AutoPostBack="True" OnTextChanged="drp1_TextChanged"></asp:DropDownList>
                             </div>
                         </div>
                         <div class="form-item">
