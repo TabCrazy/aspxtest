@@ -22,7 +22,7 @@ public partial class addFlower : System.Web.UI.Page
     }
     private void BindDrp2 ()
     {
-        DataSet ds = DBHelperAccess.GetList("select * from type where lx='"+drp1.SelectedValue+"'");
+        DataSet ds = DBHelperAccess.GetList("select * from type where lx='"+drp1.SelectedValue+"' and zl='1'");
         drp2.DataValueField = "id";
         drp2.DataTextField = "lxmc";
         drp2.DataSource = ds.Tables[0];
