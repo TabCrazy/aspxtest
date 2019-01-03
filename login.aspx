@@ -15,7 +15,7 @@
                 <div class="form-item">
                     <div class="label">用户名:</div>
                     <div class="inpu">
-                        <input class="inputsty username" runat="server" type="text" value="czadmin" id="txt_userName" />
+                        <input class="inputsty username" runat="server" type="text" value="czadmin" id="txt_userName" autocomplete="off" />
                     </div>
                 </div>
                 <div class="form-item">
