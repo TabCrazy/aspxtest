@@ -29,22 +29,6 @@ public partial class addFlower : System.Web.UI.Page
         drp2.DataBind();
     }
 
-    /// <summary>
-    /// 绑定数据
-    /// </summary>
-    private void BindData (string id)
-    {
-        DataSet dataSet = DBHelperAccess.GetList("select top 1 * from flower where id=" + id);
-
-        drp1.SelectedValue = dataSet.Tables[0].Rows[0]["lx"].ToString();
-        drp2.SelectedValue = dataSet.Tables[0].Rows[0]["jb"].ToString();
-
-        txt_mc.Value = dataSet.Tables[0].Rows[0]["mc"].ToString();
-        txt_gg.Value = dataSet.Tables[0].Rows[0]["gg"].ToString();
-
-        ck_tj.Checked = Convert.ToBoolean(dataSet.Tables[0].Rows[0]["tj"] ?? false);
-    }
-
     protected void Page_Load (object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -55,7 +39,15 @@ public partial class addFlower : System.Web.UI.Page
             string id = Request.QueryString["id"];
             if (!string.IsNullOrEmpty(id))
             {
-                BindData(id.ToString());
+                DataSet dataSet = DBHelperAccess.GetList("select top 1 * from flower where id=" + id);
+                drp1.SelectedValue = dataSet.Tables[0].Rows[0]["lx"].ToString();
+                BindDrp2();
+                drp2.SelectedValue = dataSet.Tables[0].Rows[0]["jb"].ToString();
+                txt_mc.Value = dataSet.Tables[0].Rows[0]["mc"].ToString();
+                txt_gg.Value = dataSet.Tables[0].Rows[0]["gg"].ToString();
+
+                ck_tj.Checked = Convert.ToBoolean(dataSet.Tables[0].Rows[0]["tj"] ?? false);
+                //BindData(id.ToString());
             }
         }
     }
