@@ -29,7 +29,7 @@
                         <table class="table-cus" cellspacing="1" cellpadding="0">
                             <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                 <HeaderTemplate>
-                                    <tr class="table-row">
+                                    <tr class="table-row head">
                                         <td class="table-col order">序号
                                         </td>
                                         <td class="table-col sname">备注
