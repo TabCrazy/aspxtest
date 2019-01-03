@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>行情走势</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta id="WebViewport" name="viewport" content="width=device-width">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <link rel="stylesheet" type="text/css" href="./css/loony/datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/loony/style.css">
+    <script src="./js/loony/flexibleRem.js"></script>
+</head>
+<body>
+    <div class="trend-list-wrap">
+        <div class="trend-menu">
+            <ul id="flower-trend-type"></ul>
+        </div>
+        <div class="filter-bar">
+            <dl>
+                <dt>花种分类:</dt>
+                <dd>
+                    <ul id="flowe-subclass"></ul>
+                </dd>
+            </dl>
+            <dl class="grade">
+                <dt>花种等级:</dt>
+                <dd>
+                    <ul id="flowe-level"></ul>
+                </dd>
+            </dl>
+        </div>
+        <div class="inside-trend">
+            <div class="picker-data">
+                <div id="opt-btn" class="opt-btn">
+                    <div class="item">最近</div>
+                    <div data-view-day="7" class="item circbtn curr">周</div>
+                    <div data-view-day="30" class="item circbtn">月</div>
+                    <div data-view-day="365" class="item circbtn">年</div>
+                    <div class="item cus">
+                        <div id="cus-btn" class="cus-btn">自定义</div>
+                        <div id="cus-date-dialog" class="cus-date-dialog">
+                            <span class="arrow"></span>
+                            <span class="in-arrow"></span>
+                            <div class="dialog-head">请选择自定义时间段</div>
+                            <div class="dialog-body">
+                                <div class="start-date-item">
+                                    <span >开始日期：</span>
+                                    <input id="start-date" type="text">
+                                </div>
+                                <div class="end-date-item">
+                                    <span>结束日期：</span>
+                                    <input id="end-date" type="text">
+                                </div>
+                            </div>
+                            <div class="dialog-foot">
+                                <span id="confirm">确认</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quick-txt-qu">
+                    <a href="pro.aspx">(查看文字报价)</a>
+                </div>
+                <div id="date-mask" class="mask"></div>
+            </div>
+            <div id="chart-view-ins" class="chart-view-ins"></div>
+            <div id="remarks-trend" class="remarks">
+                <ul>
+                    <li>暂无数据</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jqueryV173.js"></script>
+    <script src="./js/loony/handlebars.min.js"></script>
+    <script src="./js/loony/echarts.common.min.js"></script>
+    <script src="./js/loony/datepicker.min.js"></script>
+    <script src="./js/loony/loonyTab.js"></script>
+    <script src="./js/loony/loonyFlowerTrend.js"></script>
+    <script id="flower-trend-type-tpl" type="text/x-handlebars-template">
+        {{#each list}}
+            <li data-typeid="{{id}}">{{lxmc}}</li>
+        {{/each}}
+    </script>
+    <script id="flowe-level-tpl" type="text/x-handlebars-template">
+        {{#each list}}
+            <li data-level="{{id}}">{{lxmc}}</li>
+        {{/each}}
+    </script>
+    <script id="flowe-subclass-tpl" type="text/x-handlebars-template">
+        {{#each list}}
+            <li data-subclass="{{id}}">{{lxmc}}</li>
+        {{/each}}
+    </script>
+</body>
+</html>

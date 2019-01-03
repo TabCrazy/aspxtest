@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>行情列表</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta id="WebViewport" name="viewport" content="width=device-width">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <link rel="stylesheet" type="text/css" href="./css/loony/datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/loony/style.css">
+    <script src="./js/loony/flexibleRem.js"></script>
+</head>
+<body>
+    <div class="trend-list-wrap">
+        <div class="trend-menu detail-menu">
+            <ul id="flower-type"></ul>
+        </div>
+        <div class="trend-list" id="trend-list">
+            <ul id="click-trend-list">
+                <li><a href="###">暂无数据</a></li>
+            </ul>
+        </div>
+        <div class="trend-detail" id="trend-detail"></div>
+    </div>
+    <script src="./js/jqueryV173.js"></script>
+    <script src="./js/loony/handlebars.min.js"></script>
+    <script src="./js/loony/echarts.common.min.js"></script>
+    <script src="./js/loony/datepicker.min.js"></script>
+    <script src="./js/loony/loonyTab.js"></script>
+    <script src="./js/loony/loonyTabList.js"></script>
+    <script id="trend-list-tpl" type="text/x-handlebars-template">
+        {{#each list}}
+            <li class="item_{{@index}}" data-trend-id="{{id}}"><a>{{title}}</a></li>
+        {{/each}}
+    </script>
+    <script id="trend-detail-tpl" type="text/x-handlebars-template">
+        <h4>{{title}}</h4>
+        <div class="date">{{date}}</div>
+        <div class="table-cus">
+            <ul class="row head">
+                <li class="col c-title">名称</li>
+                <li class="col c-img">图片</li>
+                <li class="col c-price">价格</li>
+                <li class="col c-spec">规格（支/扎）</li>
+                <li class="col c-producer">产地</li>
+                <li class="col c-curve">行情曲线</li>
+                <li class="col c-level">系列</li>
+                <li class="col c-remarks">备注</li>
+            </ul>
+            {{#each detailList}}
+            <ul class="row">
+                <li class="col c-title">{{mc}}</li>
+                <li class="col c-img">
+                    <img src="{{tp}}" alt="{{mc}}" />
+                </li>
+                <li class="col c-price">{{price}}</li>
+                <li class="col c-spec">{{gg}}</li>
+                <li class="col c-producer">{{cd}}</li>
+                <li class="col c-curve icon_{{trend}}"></li>
+                <li class="col c-level">{{jb}}</li>
+                <li class="col c-remarks">{{bz}}</li>
+            </ul>
+            {{/each}}
+        </div>
+        <div id="back-list" class="back-list">返回</div>
+        <div class="last-or-next">
+            <div id="last-trend" class="last-trend"></div>
+            <div id="next-trend" class="next-trend"></div>
+        </div>
+    </script>
+    <script>
+        Handlebars.registerHelper('if_eq', function(v1, v2, opts) {
+            if(v1 == v2)
+                return opts.fn(this);
+            else
+                return opts.inverse(this);
+        });
+    </script>
+    <script id="type-list-tpl" type="text/x-handlebars-template">
+        {{#each list}}
+            {{#if_eq @index 0}}
+                <li data-type-id="{{id}}" class="curr">{{lxmc}}</li>
+            {{else}}
+                <li data-type-id="{{id}}">{{lxmc}}</li>
+            {{/if_eq}}
+        {{/each}}
+        
+    </script>
+</body>
+</html>
