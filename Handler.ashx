@@ -79,8 +79,8 @@ public class Handler : IHttpHandler
         }
 
         string host = HttpContext.Current.Request.Url.Host + "/img/";
-       // string path = ConfigurationManager.AppSettings["url"].ToString() + "/img/";
-        string path = context.Request.Url.Authority+"/img/";
+        // string path = ConfigurationManager.AppSettings["url"].ToString() + "/img/";
+        string path = "http://" + context.Request.Url.Authority + "/img/";
 
         string sql = "select p.id,f.lx,t.lxmc as jb,f.zl,f.mc,'" + path + "'+f.tp as tp,f.gg,f.cd,f.bz,p.jg as price,p.trend from (price p inner join flower f on f.id=p.flowerid) inner join type t on f.zl=t.id where " + where;
         DataSet ds = DBHelperAccess.GetList(sql);
@@ -261,7 +261,7 @@ public class Handler : IHttpHandler
                     priceWhere += " and f.tj=" + context.Request.QueryString["isRecommend"].ToString();
                 }
 
-                string priceSql = "select f.mc,f.id,p.jg as price,t.lxmc as jb from (flower f inner join type t on t.id=f.zl) inner join price p on f.id=p.flowerid where " + priceWhere;
+                string priceSql = "select f.mc,f.id,p.jg as price,t.lxmc as jb,p.cd,p.bz from (flower f inner join type t on t.id=f.zl) inner join price p on f.id=p.flowerid where " + priceWhere;
                 DataSet priceDs = DBHelperAccess.GetList(priceSql);
 
                 model.title = dr["bjName"].ToString();  // 报价名
