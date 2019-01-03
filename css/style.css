@@ -259,3 +259,6 @@ div.line {
     border: 0;
     outline: 0;
 }
+table.pager {
+    margin: 10px 0;
+}
