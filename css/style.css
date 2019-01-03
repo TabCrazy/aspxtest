@@ -167,6 +167,9 @@ select.aspNetDisabled {
     padding: 0 5px;
     background: #fff;
 }
+.table-row.head .table-col {
+    background: #f5f5f5;
+}
 .table-col.order {
     width: 10%;
 }
