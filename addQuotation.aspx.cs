@@ -62,12 +62,12 @@ public partial class addQuotation : System.Web.UI.Page
             DataSet maxds = DBHelperAccess.GetList(maxDateSql);
             if (maxds == null || maxds.Tables.Count == 0 || maxds.Tables[0].Rows.Count == 0)// 如果不存在上一天数据
             {
-                sql = "select f.id as fid,0 as id, f.mc,0 as jg,'' as cd,'' as bz,1 as dj,1 as trend from flower f where " + where;
+                sql = "select f.id as fid,0 as id, f.mc,0 as jg,'' as cd,'' as bz,0 as dj,1 as trend from flower f where " + where;
             }
             else
             {
                 string id = maxds.Tables[0].Rows[0]["id"].ToString();
-                sql = "select f.id as fid,0 as id, f.mc,p.jg as jg,p.cd as cd,p.bz as bz,1 as dj,trend from flower f inner join price p on f.id=p.flowerid where " + where
+                sql = "select f.id as fid,0 as id, f.mc,p.jg as jg,p.cd as cd,p.bz as bz,0 as dj,trend from flower f inner join price p on f.id=p.flowerid where " + where
                     + " and priceInfoId=" + id;
             }
             ds = DBHelperAccess.GetList(sql);
@@ -235,7 +235,7 @@ public partial class addQuotation : System.Web.UI.Page
     /// <returns></returns>
     private DataTable GetLevel ()
     {
-        string str = "select id,lxmc from type where zl='2'";
+        string str = "select id,lxmc from type where zl='2' and lx='"+drp1.SelectedValue+"'";
         DataSet ds = DBHelperAccess.GetList(str);
         if (ds != null && ds.Tables.Count > 0)
         {
@@ -269,6 +269,7 @@ public partial class addQuotation : System.Web.UI.Page
             drpdj.DataSource = GetLevel();
             drpdj.DataValueField = "id";
             drpdj.DataTextField = "lxmc";
+            drpdj.DataBind() ;
 
             DropDownList DListNewsIsShow = (DropDownList)e.Item.FindControl("drp_qs");
             string djvale= rowv["dj"].ToString();
