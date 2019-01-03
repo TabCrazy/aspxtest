@@ -27,7 +27,7 @@ public partial class flowerMange : System.Web.UI.Page
         string value = drp1.SelectedValue;
         if (value != "0")
         {
-            DataSet ds = DBHelperAccess.GetList("select id,lxmc from type where lx='" + value + "'");
+            DataSet ds = DBHelperAccess.GetList("select id,lxmc from type where lx='" + value + "' and zl='1'");
             drp2.DataValueField = "id";
             drp2.DataTextField = "lxmc";
             drp2.DataSource = InsertTotal(ds.Tables[0]);
