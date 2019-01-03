@@ -116,7 +116,20 @@ public partial class typeList : System.Web.UI.Page
         }
         else if (e.CommandName == "Delete" && !String.IsNullOrEmpty(id))
         {
-            int i = DBHelperAccess.ExecuteSql("delete from type where id=" + id);
+            string deleteSql = "delete from type where id=" + id;
+            string useSql = "select count(1) from flower where lx="+id +" or zl="+id+" ";
+            string usedSql2 = "select * from price where dj = '" + id + "'";
+
+            int count=Convert.ToInt32( DBHelperAccess.GetSingle(useSql));
+            count = count + Convert.ToInt32(DBHelperAccess.GetSingle(usedSql2));
+
+            if (count > 0)
+            {
+                Response.Write("<script>alert('数据被引用，不能被删除！')</script>");
+                return;
+            }
+
+            int i = DBHelperAccess.ExecuteSql(deleteSql);
 
             if (i == 0)
             {
