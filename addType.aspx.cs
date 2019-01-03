@@ -10,12 +10,12 @@ public partial class addType : System.Web.UI.Page
 {
     protected void Page_Load (object sender, EventArgs e)
     {
-        //if (Session["userName"] == null)
-        //{
-        //    Response.Write("<script>alert('登录超时，请从新登录！')</script>");
-        //    Response.Redirect("login.aspx");
-        //    return;
-        //}
+        if (Session["userName"] == null)
+        {
+            Response.Write("<script>alert('登录超时，请从新登录！')</script>");
+            Response.Redirect("login.aspx");
+            return;
+        }
         if (!IsPostBack)
         {
             InitData();
@@ -24,10 +24,19 @@ public partial class addType : System.Web.UI.Page
             if (!string.IsNullOrEmpty(id))
             {
                 DataSet ds = DBHelperAccess.GetList("select * from type where id =" + id);
-                select_type.Value = (ds.Tables[0].Rows[0]["lx"]).ToString();
-                select_zl.Value = (ds.Tables[0].Rows[0]["zl"]).ToString();
+                string lx= ds.Tables[0].Rows[0]["lx"].ToString();
+                drp1.SelectedValue = lx;
+
+                if (lx!="0")
+                {
+                    drp2.Visible = true;
+                }
+                drp2.SelectedValue = (ds.Tables[0].Rows[0]["zl"]).ToString();
                 ipt_lxmc.Value = (ds.Tables[0].Rows[0]["lxmc"]).ToString();
+                drp1.Enabled = false;
             }
+
+            drp1_SelectedIndexChanged(null, null);
         }
     }
 
@@ -42,10 +51,10 @@ public partial class addType : System.Web.UI.Page
         DataSet ds = DBHelperAccess.GetList(sql);
         if (ds != null && ds.Tables.Count > 0)
         {
-            select_type.DataValueField = "id";
-            select_type.DataTextField = "lxmc";
-            select_type.DataSource = InsertTotal(ds.Tables[0]);
-            select_type.DataBind();
+            drp1.DataValueField = "id";
+            drp1.DataTextField = "lxmc";
+            drp1.DataSource = InsertTotal(ds.Tables[0]);
+            drp1.DataBind();
         }
     }
 
@@ -84,7 +93,7 @@ public partial class addType : System.Web.UI.Page
         }
 
         string lxmc = ipt_lxmc.Value;
-        string lx = select_type.Value;
+        string lx = drp1.SelectedValue;
         string zl = GetZL();
 
         string sql = "update type set lxmc='" + lxmc + "',lx='" + lx + "',zl='" + zl + "' where id =" + Request.QueryString["id"];
@@ -117,7 +126,7 @@ public partial class addType : System.Web.UI.Page
         }
 
         string lxmc = ipt_lxmc.Value;
-        string lx = select_type.Value;
+        string lx = drp1.SelectedValue;
         string zl = GetZL();
 
         string sql = "insert into type(lxmc,lx,zl) values('" + ipt_lxmc.Value + "','" + lx + "','" + zl + "')";
@@ -147,13 +156,29 @@ public partial class addType : System.Web.UI.Page
     /// <returns></returns>
     private string GetZL ()
     {
-        if (select_type.Value == "0")
+        if (drp1.SelectedValue == "0")
         {
             return "0";
         }
         else
         {
-            return select_zl.Value;
+            return drp2.SelectedValue;
+        }
+    }
+
+    protected void drp1_SelectedIndexChanged (object sender, EventArgs e)
+    {
+        string drp1value = drp1.SelectedValue;
+
+        if(drp1value=="0")
+        {
+            leveSelect.Visible = false;
+            drp2.Visible = false;
+        }
+        else
+        {
+            leveSelect.Visible = true;
+            drp2.Visible = true;
         }
     }
 }

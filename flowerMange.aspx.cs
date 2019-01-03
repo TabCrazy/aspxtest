@@ -101,6 +101,12 @@ public partial class flowerMange : System.Web.UI.Page
     }
     protected void Page_Load (object sender, EventArgs e)
     {
+        if (Session["userName"] == null)
+        {
+            Response.Write("<script>alert('登录超时，请从新登录！')</script>");
+            Response.Redirect("login.aspx");
+            return;
+        }
         if (!IsPostBack)
         {
             lblCurrentPage.Text = "1"; // 初始化页数
