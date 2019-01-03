@@ -39,10 +39,16 @@ public class Handler : IHttpHandler
         {
             GetRemarks(context);
         }
+        else if(method.ToUpper() == "GetUrl".ToUpper())
+        {
+            string uri = context.Request.Url.Authority;
+            context.Response.Write(uri);
+        }
         else
         {
             context.Response.Write("{'error':1}");
         }
+
     }
 
     public bool IsReusable
@@ -73,7 +79,8 @@ public class Handler : IHttpHandler
         }
 
         string host = HttpContext.Current.Request.Url.Host + "/img/";
-        string path = ConfigurationManager.AppSettings["url"].ToString() + "/img/";
+       // string path = ConfigurationManager.AppSettings["url"].ToString() + "/img/";
+        string path = context.Request.Url.Authority+"/img/";
 
         string sql = "select p.id,f.lx,t.lxmc as jb,f.zl,f.mc,'" + path + "'+f.tp as tp,f.gg,f.cd,f.bz,p.jg as price,p.trend from (price p inner join flower f on f.id=p.flowerid) inner join type t on f.zl=t.id where " + where;
         DataSet ds = DBHelperAccess.GetList(sql);

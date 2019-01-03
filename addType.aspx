@@ -6,12 +6,10 @@
 <head>
     <meta charset="utf-8">
     <title>管理首页-添加分类</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-
-
         <div class="header"><span>陈砦花卉鲜花走势管理系统</span></div>
         <div class="main">
             <div class="sidebar">
@@ -30,19 +28,19 @@
                     <div id="typeSelect" class="form-item">
                         <div class="label">请选择类型</div>
                         <div class="inpu">
-                            <select runat="server" id="select_type" class="selectsty">
-                                <option value="0">鲜花类型</option>
-                            </select>
+                            <asp:DropDownList runat="server" ID="drp1" class="selectsty" AutoPostBack="True" OnSelectedIndexChanged="drp1_SelectedIndexChanged">
+                                <asp:ListItem Value="0">鲜花类型</asp:ListItem>
+                            </asp:DropDownList>
                             <div class="tips" style="font-size: 12px; color: #f00">鲜花类型为顶级类型，如：鲜切花、盆花、苗木，其余可选项为添加的鲜花类型</div>
                         </div>
                     </div>
-                    <div id="leveSelect" class="form-item" style="display: none">
+                    <div id="leveSelect" runat="server" class="form-item" >
                         <div class="label">子类/级别</div>
                         <div class="inpu">
-                            <select class="selectsty" runat="server" id="select_zl">
-                                <option value="1">子类</option>
-                                <option value="2">级别</option>
-                            </select>
+                            <asp:DropDownList runat="server" ID="drp2" class="selectsty" >
+                                <asp:ListItem Value="1">子类</asp:ListItem>
+                                <asp:ListItem Value="2">级别</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
                     <div class="form-item">
@@ -61,19 +59,6 @@
             </div>
         </div>
         <script src="./js/jquery.min.js"></script>
-        <script>
-            $(function () {
-                console.log(222);
-                $("#typeSelect").find('.selectsty').bind('change', function (e) {
-                    var typeVal = $("#typeSelect").find('.selectsty').val() - 0;
-                    if (typeVal !== 1) {
-                        $("#leveSelect").show();
-                    } else {
-                        $("#leveSelect").hide();
-                    }
-                })
-            })
-        </script>
     </form>
 </body>
 </html>
