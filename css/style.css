@@ -169,6 +169,7 @@ select.aspNetDisabled {
 }
 .table-row.head .table-col {
     background: #f5f5f5;
+    font-size: 13px;
 }
 .table-col.order {
     width: 10%;
