@@ -48,12 +48,11 @@ public partial class addFlower : System.Web.UI.Page
                 DataSet dataSet = DBHelperAccess.GetList("select top 1 * from flower where id=" + id);
                 drp1.SelectedValue = dataSet.Tables[0].Rows[0]["lx"].ToString();
                 BindDrp2();
-                drp2.SelectedValue = dataSet.Tables[0].Rows[0]["jb"].ToString();
+                drp2.SelectedValue = dataSet.Tables[0].Rows[0]["zl"].ToString();
                 txt_mc.Value = dataSet.Tables[0].Rows[0]["mc"].ToString();
                 txt_gg.Value = dataSet.Tables[0].Rows[0]["gg"].ToString();
 
                 ck_tj.Checked = Convert.ToBoolean(dataSet.Tables[0].Rows[0]["tj"] ?? false);
-                //BindData(id.ToString());
             }
         }
     }

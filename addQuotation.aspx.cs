@@ -73,7 +73,7 @@ public partial class addQuotation : System.Web.UI.Page
             else
             {
                 string id = maxds.Tables[0].Rows[0]["id"].ToString();
-                sql = "select f.id as fid,0 as id, f.mc,p.jg as jg,p.cd as cd,p.bz as bz,0 as dj,trend from flower f inner join price p on f.id=p.flowerid where " + where
+                sql = "select f.id as fid,0 as id, f.mc,p.jg as jg,p.cd as cd,p.bz as bz,dj,trend from flower f inner join price p on f.id=p.flowerid where " + where
                     + " and priceInfoId=" + id;
             }
             ds = DBHelperAccess.GetList(sql);
