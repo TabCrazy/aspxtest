@@ -59,7 +59,7 @@
                                 </ItemTemplate>
                             </asp:Repeater>
                         </table>
-                        <table>
+                        <table class="pager">
                             <tr>
                                 <td>总记录数：<asp:Label ID="lblCount" runat="server" Text=""></asp:Label>
                                 </td>
