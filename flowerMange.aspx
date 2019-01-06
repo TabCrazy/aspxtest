@@ -16,7 +16,7 @@
                 <div class="menu">
                     <ul>
                         <li><a href="./typeList.aspx">分类管理</a></li>
-                        <li><a href="./flowerMange.aspx">鲜花管理</a></li>
+                        <li class="curr"><a href="./flowerMange.aspx">鲜花管理</a></li>
                         <li><a href="./index.aspx">每日报价</a></li>
                         <li><a href="./remarks.aspx">备注信息</a></li>
                     </ul>

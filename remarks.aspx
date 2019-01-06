@@ -18,7 +18,7 @@
                         <li><a href="./typeList.aspx">分类管理</a></li>
                         <li><a href="./flowerMange.aspx">鲜花管理</a></li>
                         <li><a href="./index.aspx">每日报价</a></li>
-                        <li><a href="./remarks.aspx">备注管理</a></li>
+                        <li class="curr"><a href="./remarks.aspx">备注管理</a></li>
                     </ul>
                 </div>
             </div>
