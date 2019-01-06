@@ -248,10 +248,10 @@ public class Handler : IHttpHandler
                 {
                     priceWhere += " and f.lx=" + context.Request.QueryString["lx"].ToString();
                 }
-                //if (!string.IsNullOrEmpty(context.Request.QueryString["jb"]))  // 级别
-                //{
-                //    priceWhere += " and f.jb=" + context.Request.QueryString["jb"].ToString();
-                //}
+                if (!string.IsNullOrEmpty(context.Request.QueryString["jb"]))  // 级别
+                {
+                    priceWhere += " and p.jb=" + context.Request.QueryString["jb"].ToString();
+                }
                 if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //系列
                 {
                     priceWhere += " and f.zl=" + context.Request.QueryString["zl"].ToString();
@@ -263,18 +263,18 @@ public class Handler : IHttpHandler
 
                 string priceSql = "";
                 string jb = context.Request.QueryString["jb"];
-                if (string.IsNullOrEmpty(jb))
-                {
-                    priceSql = "select f.mc,f.id,p.jg as price,t.lxmc as jb,p.cd,p.bz " +
-                        "from (flower f inner join type t on t.id=f.zl) " +
-                        "inner join price p on f.id=p.flowerid where " + priceWhere + " order by f.lx, f.zl,f.id";
-                }
-                else
-                {
-                    priceSql = "select f.mc,f.id,p.dj," +
-                            "iif(p.dj='"+jb+"',p.jg,0) as price ," +
-                            "t.lxmc as jb,p.cd,p.bz from (flower f inner join type t on t.id=f.zl) inner join price p on f.id=p.flowerid where " + priceWhere + " order by f.lx, f.zl,f.id";
-                }
+                //if (string.IsNullOrEmpty(jb))
+                //{
+                priceSql = "select f.mc,f.id,p.jg as price,t.lxmc as jb,p.cd,p.bz " +
+                    "from (flower f inner join type t on t.id=f.zl) " +
+                    "inner join price p on f.id=p.flowerid where " + priceWhere + " order by f.lx, f.zl,f.id";
+                //}
+                //else
+                //{
+                //    priceSql = "select f.mc,f.id,p.dj," +
+                //            "iif(p.dj='"+jb+"',p.jg,0) as price ," +
+                //            "t.lxmc as jb,p.cd,p.bz from (flower f inner join type t on t.id=f.zl) inner join price p on f.id=p.flowerid where " + priceWhere + " order by f.lx, f.zl,f.id";
+                //}
 
                 DataSet priceDs = DBHelperAccess.GetList(priceSql);
 
