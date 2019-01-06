@@ -61,7 +61,7 @@
                                     <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
                                         <HeaderTemplate>
                                             <tr class="table-row head">
-                                                <td class="table-col order">序号</td>
+                                                <td class="table-col order">系列名称</td>
                                                 <td class="table-col aname">鲜花名称</td>
                                                 <td class="table-col aprice">价格</td>
                                                 <td class="table-col aprice">产地</td>
@@ -73,7 +73,7 @@
                                         <ItemTemplate>
                                             <tr class="table-row">
                                                 <td class="table-col order">
-                                                    <%#Container.ItemIndex + 1%>
+                                                   <%#Eval("lxmc")%>
                                                 </td>
                                                 <td class="table-col aname">
                                                     <%#Eval("mc")%>
