@@ -250,7 +250,7 @@ public class Handler : IHttpHandler
                 }
                 if (!string.IsNullOrEmpty(context.Request.QueryString["jb"]))  // 级别
                 {
-                    priceWhere += " and p.jb=" + context.Request.QueryString["jb"].ToString();
+                    priceWhere += " and p.dj='" + context.Request.QueryString["jb"].ToString()+"'";
                 }
                 if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //系列
                 {
