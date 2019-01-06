@@ -35,7 +35,7 @@
                     <div class="form-item">
                         <div class="label">请选择类型</div>
                         <div class="inpu">
-                            <asp:DropDownList runat="server" class="selectsty small" ID="drp1" AutoPostBack="true" OnTextChanged="drp1_TextChanged">
+                            <asp:DropDownList runat="server" class="selectsty small" ID="drp1" AutoPostBack="true" OnSelectedIndexChanged="drp1_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                     </div>

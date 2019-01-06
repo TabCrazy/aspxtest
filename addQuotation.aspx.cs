@@ -9,6 +9,15 @@ using System.Web.UI.WebControls;
 
 public partial class addQuotation : System.Web.UI.Page
 {
+    private DataTable InsertTotal (DataTable dt)
+    {
+        DataRow dr = dt.NewRow();
+        dr["id"] = "0";
+        dr["lxmc"] = "无";
+        dt.Rows.InsertAt(dr, 0);
+        return dt;
+    }
+
     private void SetMC()
     {
         string dates = Convert.ToDateTime(txt_rq.Value).ToString("yyyy-MM-dd");
@@ -32,16 +41,15 @@ public partial class addQuotation : System.Web.UI.Page
             string date = txt_rq.Value;
         }
         SetMC();
-        if (!IsPostBack)
-        {
-            Query();
-        }
+        //if (!IsPostBack)
+        //{
+        //    Query();
+        //}
         if (!string.IsNullOrEmpty(Request.QueryString["id"]))  // 编辑的时候不允许修改下拉列表
         {
             drp1.Enabled = false;
             this.txt_rq.Attributes.Add("ReadOnly", "true");
         }
-
     }
 
     private void BindDrplb ()
@@ -51,7 +59,7 @@ public partial class addQuotation : System.Web.UI.Page
         {
             drp1.DataValueField = "id";
             drp1.DataTextField = "lxmc";
-            drp1.DataSource = ds.Tables[0];
+            drp1.DataSource = InsertTotal(ds.Tables[0]);
             drp1.DataBind();
         }
     }
@@ -133,6 +141,11 @@ public partial class addQuotation : System.Web.UI.Page
 
     protected void btn_save_Click (object sender, EventArgs e)
     {
+        if (drp1.SelectedValue == "")
+        {
+            return;
+        }
+
         if (CheckData())
         {
             if (string.IsNullOrEmpty(Request.QueryString["id"]))
@@ -296,7 +309,7 @@ public partial class addQuotation : System.Web.UI.Page
         }
     }
 
-    protected void drp1_TextChanged (object sender, EventArgs e)
+    protected void drp1_SelectedIndexChanged (object sender, EventArgs e)
     {
         Query();
     }
