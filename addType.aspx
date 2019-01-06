@@ -35,10 +35,10 @@
                         </div>
                     </div>
                     <div id="leveSelect" runat="server" class="form-item" >
-                        <div class="label">子类/级别</div>
+                        <div class="label">系列/级别</div>
                         <div class="inpu">
                             <asp:DropDownList runat="server" ID="drp2" class="selectsty" >
-                                <asp:ListItem Value="1">子类</asp:ListItem>
+                                <asp:ListItem Value="1">系列</asp:ListItem>
                                 <asp:ListItem Value="2">级别</asp:ListItem>
                             </asp:DropDownList>
                         </div>

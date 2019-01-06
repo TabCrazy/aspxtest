@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="form-item">
-                            <div class="label">鲜花子类</div>
+                            <div class="label">鲜花系列</div>
                             <div class="inpu">
                                 <asp:DropDownList runat="server" class="selectsty" ID="drp2"></asp:DropDownList>
                             </div>

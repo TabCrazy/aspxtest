@@ -71,7 +71,7 @@ public partial class typeList : System.Web.UI.Page
         {
             DataRow dr2 = dt.NewRow();
             dr2["id"] = "1";
-            dr2["lxmc"] = "子类";
+            dr2["lxmc"] = "系列";
             dt.Rows.Add(dr2);
 
             DataRow dr3 = dt.NewRow();

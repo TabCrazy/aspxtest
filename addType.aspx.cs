@@ -151,7 +151,7 @@ public partial class addType : System.Web.UI.Page
     }
 
     /// <summary>
-    /// 获取子类字段
+    /// 获取系列字段
     /// </summary>
     /// <returns></returns>
     private string GetZL ()

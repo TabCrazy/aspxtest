@@ -27,7 +27,7 @@ public class Handler : IHttpHandler
         {
             GetCategory(context);
         }
-        else if (method.ToUpper() == "GetTrend".ToUpper()) // 根据鲜花类型、鲜花级别、鲜花子类、开始时间、结束时间查询报价  ok
+        else if (method.ToUpper() == "GetTrend".ToUpper()) // 根据鲜花类型、鲜花级别、鲜花系列、开始时间、结束时间查询报价  ok
         {
             GetTrend(context);
         }
@@ -138,7 +138,7 @@ public class Handler : IHttpHandler
     //    {
     //        where += " and jb=" + context.Request.QueryString["jb"].ToString();
     //    }
-    //    if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //子类
+    //    if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //系列
     //    {
     //        where += " and zl=" + context.Request.QueryString["zl"].ToString();
     //    }
@@ -252,7 +252,7 @@ public class Handler : IHttpHandler
                 {
                     priceWhere += " and f.jb=" + context.Request.QueryString["jb"].ToString();
                 }
-                if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //子类
+                if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //系列
                 {
                     priceWhere += " and f.zl=" + context.Request.QueryString["zl"].ToString();
                 }
