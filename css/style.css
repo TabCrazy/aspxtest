@@ -168,6 +168,9 @@ select.aspNetDisabled {
     padding: 0 5px;
     background: #fff;
 }
+.table-row:hover .table-col {
+    background: #f8f8f8;
+}
 .table-row.head .table-col {
     background: #f5f5f5;
     font-size: 13px;
