@@ -45,6 +45,7 @@ a {
     display: block;
     line-height: 30px;
     padding: 0 0 0 8px;
+    border-radius: 3px;
 }
 .menu li a:hover, .menu li.curr a {
     color: #fff;
