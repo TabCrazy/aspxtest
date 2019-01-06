@@ -68,13 +68,13 @@ public partial class addQuotation : System.Web.UI.Page
             DataSet maxds = DBHelperAccess.GetList(maxDateSql);
             if (maxds == null || maxds.Tables.Count == 0 || maxds.Tables[0].Rows.Count == 0)// 如果不存在上一天数据
             {
-                sql = "select f.id as fid,0 as id, f.mc,0 as jg,'' as cd,'' as bz,0 as dj,1 as trend from flower f where " + where+" order by f.id ";
+                sql = "select f.id as fid,0 as id, f.mc,0 as jg,'' as cd,'' as bz,0 as dj,1 as trend from flower f where " + where+" order by f.zl,f.id ";
             }
             else
             {
                 string id = maxds.Tables[0].Rows[0]["id"].ToString();
                 sql = "select f.id as fid,0 as id, f.mc,p.jg as jg,p.cd as cd,p.bz as bz,dj,trend from flower f inner join price p on f.id=p.flowerid where " + where
-                    + " and priceInfoId=" + id+" order by f.id ";
+                    + " and priceInfoId=" + id+ " order by f.zl,f.id ";
             }
             ds = DBHelperAccess.GetList(sql);
         }
@@ -93,7 +93,7 @@ public partial class addQuotation : System.Web.UI.Page
 
             sql = "select f.id as fid, p.id,f.mc,p.jg as jg,p.cd,p.bz,p.dj,trend " +
                 "from flower f left join (select * from price where priceInfoId=" + id + ") p on p.flowerId= f.id " +
-                "where f.lx=" + drp1.SelectedValue +" order by f.id ";
+                "where f.lx=" + drp1.SelectedValue + " order by f.zl,f.id ";
             ds = DBHelperAccess.GetList(sql);
         }
         Repeater1.DataSource = ds;

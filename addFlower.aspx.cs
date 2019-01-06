@@ -22,7 +22,7 @@ public partial class addFlower : System.Web.UI.Page
     }
     private void BindDrp2 ()
     {
-        DataSet ds = DBHelperAccess.GetList("select * from type where lx='"+drp1.SelectedValue+"' and zl='1'");
+        DataSet ds = DBHelperAccess.GetList("select * from type where lx='" + drp1.SelectedValue + "' and zl='1'");
         drp2.DataValueField = "id";
         drp2.DataTextField = "lxmc";
         drp2.DataSource = ds.Tables[0];
@@ -64,7 +64,7 @@ public partial class addFlower : System.Web.UI.Page
 
         string mc = txt_mc.Value.Trim();
         string gg = txt_gg.Value.Trim();
-        string tp = img_tp.PostedFile.FileName;   // 图片
+
         bool tj = ck_tj.Checked;
 
         if (mc == "")
@@ -78,7 +78,8 @@ public partial class addFlower : System.Web.UI.Page
             return;
         }
 
-        if (UpImg() == 0)
+        string tp = UpImg();  // 图片
+        if (tp == null)
         {
             return;
         }
@@ -151,13 +152,13 @@ public partial class addFlower : System.Web.UI.Page
     /// </summary>
     /// <param name="upload"></param>
     /// <returns></returns>
-    private int UpImg ()
+    private string UpImg ()
     {
         string tp = img_tp.PostedFile.FileName;   // 图片
 
         if (tp.Trim() == "")
         {
-            return 1;
+            return "";
         }
         else
         {
@@ -169,18 +170,21 @@ public partial class addFlower : System.Web.UI.Page
                 if (upImgType.Count(t => t.ToLower() == fi.Extension.ToLower()) < 1)
                 {
                     Response.Write("<script>alert('不能上传该格式的图片！')</script>");
-                    return 0;
+                    return null;
                 }
+                // 获取扩展名
+                string aLastName = fi.Extension;
+                string guid = Guid.NewGuid().ToString().Replace("-", "") + aLastName;
 
                 string savePath = Server.MapPath("~\\img"); //图片保存的文件夹
-                img_tp.PostedFile.SaveAs(savePath + "\\" + fi.Name);//保存路径
+                img_tp.PostedFile.SaveAs(savePath + "\\" + guid);//保存路径
                 //this.Image1.ImageUrl = "~\\excel" + "\\" + name;//显示图片
-                return 1;
+                return guid;
             }
             catch
             {
                 Response.Write("<script>alert('图片上传失败！')</script>");
-                return 0;
+                return null;
             }
         }
     }
