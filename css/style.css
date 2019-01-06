@@ -46,7 +46,7 @@ a {
     line-height: 30px;
     padding: 0 0 0 8px;
 }
-.menu li a:hover {
+.menu li a:hover, .menu li.curr a {
     color: #fff;
     background: #161616
 }
