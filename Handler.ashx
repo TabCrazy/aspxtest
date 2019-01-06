@@ -252,16 +252,30 @@ public class Handler : IHttpHandler
                 {
                     priceWhere += " and f.jb=" + context.Request.QueryString["jb"].ToString();
                 }
-                if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //系列
-                {
-                    priceWhere += " and f.zl=" + context.Request.QueryString["zl"].ToString();
-                }
+                //if (!string.IsNullOrEmpty(context.Request.QueryString["zl"]))  //系列
+                //{
+                //    priceWhere += " and f.zl=" + context.Request.QueryString["zl"].ToString();
+                //}
                 if (!string.IsNullOrEmpty(context.Request.QueryString["isRecommend"]))  // 是否推荐
                 {
                     priceWhere += " and f.tj=" + context.Request.QueryString["isRecommend"].ToString();
                 }
 
-                string priceSql = "select f.mc,f.id,p.jg as price,t.lxmc as jb,p.cd,p.bz from (flower f inner join type t on t.id=f.zl) inner join price p on f.id=p.flowerid where " + priceWhere+" order by f.lx, f.zl,f.id";
+                string priceSql = "";
+                string zl = context.Request.QueryString["zl"];
+                if (string.IsNullOrEmpty(zl))
+                {
+                    priceSql = "select f.mc,f.id,p.jg as price,t.lxmc as jb,p.cd,p.bz " +
+                        "from (flower f inner join type t on t.id=f.zl) " +
+                        "inner join price p on f.id=p.flowerid where " + priceWhere + " order by f.lx, f.zl,f.id";
+                }
+                else
+                {
+                    priceSql = "select f.mc,f.id," +
+                            "iif(f.zl="+zl+",p.jg,0) as price ," +
+                            "t.lxmc as jb,p.cd,p.bz from (flower f inner join type t on t.id=f.zl) inner join price p on f.id=p.flowerid where " + priceWhere + " order by f.lx, f.zl,f.id";
+                }
+
                 DataSet priceDs = DBHelperAccess.GetList(priceSql);
 
                 model.title = dr["bjName"].ToString();  // 报价名
