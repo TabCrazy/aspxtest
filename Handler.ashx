@@ -82,7 +82,7 @@ public class Handler : IHttpHandler
         // string path = ConfigurationManager.AppSettings["url"].ToString() + "/img/";
         string path = "http://" + context.Request.Url.Authority + "/img/";
 
-        string sql = "select p.id,f.lx,t.lxmc as jb,f.zl,f.mc,'" + path + "'+f.tp as tp,f.gg,f.cd,f.bz,p.jg as price,p.trend from (price p inner join flower f on f.id=p.flowerid) inner join type t on f.zl=t.id where " + where;
+        string sql = "select p.id,f.lx,t.lxmc as jb,f.zl,f.mc,'" + path + "'+f.tp as tp,f.gg,p.cd,p.bz,p.jg as price,p.trend from (price p inner join flower f on f.id=p.flowerid) inner join type t on f.zl=t.id where " + where;
         DataSet ds = DBHelperAccess.GetList(sql);
 
         if (ds == null || ds.Tables.Count == 0)
