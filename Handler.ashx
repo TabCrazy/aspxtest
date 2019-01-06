@@ -271,8 +271,8 @@ public class Handler : IHttpHandler
                 }
                 else
                 {
-                    priceSql = "select f.mc,f.id," +
-                            "iif(f.jb="+jb+",p.jg,0) as price ," +
+                    priceSql = "select f.mc,f.id,p.dj," +
+                            "iif(p.dj='"+jb+"',p.jg,0) as price ," +
                             "t.lxmc as jb,p.cd,p.bz from (flower f inner join type t on t.id=f.zl) inner join price p on f.id=p.flowerid where " + priceWhere + " order by f.lx, f.zl,f.id";
                 }
 
