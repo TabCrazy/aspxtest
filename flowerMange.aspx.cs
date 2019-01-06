@@ -92,7 +92,7 @@ public partial class flowerMange : System.Web.UI.Page
         }
         else
         {
-            sql = "select top " + pageSize + " * from flower where " + where + " and id not in(select top " + pageSize * (curPage - 1) + " id from flower where " + where + " order by id) order by f.lx,f.zl,f.id";
+            sql = "select top " + pageSize + " * from flower f where " + where + " and id not in(select top " + pageSize * (curPage - 1) + " id from flower where " + where + " order by id) order by f.lx,f.zl,f.id";
         }
         DataSet ds = DBHelperAccess.GetList(sql);
 
