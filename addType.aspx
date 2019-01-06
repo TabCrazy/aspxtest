@@ -31,7 +31,7 @@
                             <asp:DropDownList runat="server" ID="drp1" class="selectsty" AutoPostBack="True" OnSelectedIndexChanged="drp1_SelectedIndexChanged">
                                 <asp:ListItem Value="0">鲜花类型</asp:ListItem>
                             </asp:DropDownList>
-                            <div class="tips" style="font-size: 12px; color: #f00">鲜花类型为顶级类型，如：鲜切花、盆花、苗木，其余可选项为添加的鲜花类型</div>
+                            <div class="tips" style="font-size: 12px; color: #f00">鲜花类型为顶级类型，在此分类下面添加鲜花大类，如：鲜切花、盆花、苗木。其余可选项为添加的鲜花类型的系列和级别</div>
                         </div>
                     </div>
                     <div id="leveSelect" runat="server" class="form-item" >
