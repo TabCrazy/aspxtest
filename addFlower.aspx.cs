@@ -92,7 +92,7 @@ public partial class addFlower : System.Web.UI.Page
         if (!string.IsNullOrEmpty(id)) // 有id，是修改数据操作，没id，是新增操作
         {
             // 验证重名
-            int haveFlower = Convert.ToInt32(DBHelperAccess.GetSingle("select count(1) from flower where mc='" + mc + "' and id<>" + id));
+            int haveFlower = Convert.ToInt32(DBHelperAccess.GetSingle("select count(1) from flower where mc='" + mc + "' and lx=" + lx + " and id<>" + id));
             if (haveFlower > 0)
             {
                 Response.Write("<script>alert('该鲜花名已存在，请跟换花名！')</script>");
@@ -113,7 +113,7 @@ public partial class addFlower : System.Web.UI.Page
         else
         {
             // 验证重名
-            int haveFlower = Convert.ToInt32(DBHelperAccess.GetSingle("select count(1) from flower where mc='" + mc + "'"));
+            int haveFlower = Convert.ToInt32(DBHelperAccess.GetSingle("select count(1) from flower where mc='" + mc + "' and lx=" + lx));
             if (haveFlower > 0)
             {
                 Response.Write("<script>alert('该鲜花名已存在，不能添加！')</script>");
