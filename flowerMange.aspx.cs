@@ -11,6 +11,13 @@ using System.Web.UI.WebControls;
 
 public partial class flowerMange : System.Web.UI.Page
 {
+    public class FlowerList
+    {
+        public int Id { get; set; }
+        public string mc { get; set; }
+        public string tp { get; set; }
+        public string gg { get; set; }
+    }
     /// <summary>
     /// 绑定下拉列表
     /// </summary>
@@ -84,21 +91,36 @@ public partial class flowerMange : System.Web.UI.Page
             last.Enabled = false;
         }
 
-        string sql = "";
+        string sql = "select * from flower f where " + where+ " order by f.lx,f.zl,f.id";
 
-        if (curPage == 1)
-        {
-            sql = "select top " + pageSize + " * from flower where " + where;
-        }
-        else
-        {
-            sql = "select top " + pageSize + " * from flower f where " + where + " and id not in(select top " + pageSize * (curPage - 1) + " id from flower where " + where + " order by id) order by f.lx,f.zl,f.id";
-        }
         DataSet ds = DBHelperAccess.GetList(sql);
 
-        Repeater1.DataSource = ds;
+        int minRow = pageSize * (curPage - 1);
+        int maxRow = pageSize * curPage ;
+
+        Repeater1.DataSource = ds.Tables.Count == 0 ? null : GetCurPageDate(ds.Tables[0], minRow, maxRow);
         Repeater1.DataBind();
     }
+
+    private DataTable GetCurPageDate (DataTable dt, int minRow, int maxRow)
+    {
+        List<FlowerList> flowerLists = new List<FlowerList>();
+        int count = dt.Rows.Count > maxRow ? maxRow : dt.Rows.Count;
+
+        for (int i = minRow; i < count; i++)
+        {
+            FlowerList flowerList = new FlowerList() {
+                Id = (int)dt.Rows[i]["id"],
+                mc = dt.Rows[i]["mc"].ToString(),
+                tp = dt.Rows[i]["tp"].ToString(),
+                gg = dt.Rows[i]["id"].ToString(),
+            };
+            flowerLists.Add(flowerList);
+        }
+
+        return FunctionModel.ToDataTable(flowerLists);
+    }
+
     protected void Page_Load (object sender, EventArgs e)
     {
         if (Session["userName"] == null)

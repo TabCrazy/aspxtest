@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 /// <summary>
@@ -8,20 +11,31 @@ using System.Web;
 /// </summary>
 public static class FunctionModel
 {
-    ///// <summary>
-    ///// 添加全部项
-    ///// </summary>
-    ///// <returns></returns>
-    //private DataTable InsertTotal (DataTable dt, string valueField, string TextField, string value, string )
-    //{
-    //    DataRow dr = dt.NewRow();
-    //    dr["id"] = "0";
-    //    dr["mc"] = "鲜花类型";
-    //    dt.Rows.InsertAt(dr, 0);
-    //    return dt;
-    //}
     /// <summary>
-    /// 判断登录状态
+    /// list 转 datatable
     /// </summary>
-
+    /// <typeparam name="T"></typeparam>
+    /// <param name="collection"></param>
+    /// <returns></returns>
+    public static DataTable ToDataTable<T> (IEnumerable<T> collection)
+    {
+        var props = typeof(T).GetProperties();
+        var dt = new DataTable();
+        dt.Columns.AddRange(props.Select(p => new DataColumn(p.Name, p.PropertyType)).ToArray());
+        if (collection.Count() > 0)
+        {
+            for (int i = 0; i < collection.Count(); i++)
+            {
+                ArrayList tempList = new ArrayList();
+                foreach (PropertyInfo pi in props)
+                {
+                    object obj = pi.GetValue(collection.ElementAt(i), null);
+                    tempList.Add(obj);
+                }
+                object[] array = tempList.ToArray();
+                dt.LoadDataRow(array, true);
+            }
+        }
+        return dt;
+    }
 }
