@@ -9,6 +9,12 @@ using System.Web.UI.WebControls;
 
 public partial class index : System.Web.UI.Page
 {
+    public class PriceInfoList
+    {
+        public int Id { get; set; }
+        public string bjName { get; set; }
+    }
+
     protected void Page_Load (object sender, EventArgs e)
     {
         if (Session["userName"] == null)
@@ -56,22 +62,33 @@ public partial class index : System.Web.UI.Page
             last.Enabled = false;
         }
 
-        string sql = "";
+        string sql = "select * from priceInfo order by cdate(bjDate) desc ";
 
-        if (curPage == 1)
-        {
-            sql = "select top " + pageSize + " * from priceInfo order by cdate(bjDate) desc ";
-        }
-        else
-        {
-            sql = "select top " + pageSize + " * from priceInfo where id not in(select top " + pageSize * (curPage - 1) + " id from priceInfo order by cdate(bjDate) desc) order by cdate(bjDate) desc";
-        }
-        //   string sql = " select * from priceInfo ";
         DataSet ds = DBHelperAccess.GetList(sql);
-        Repeater1.DataSource = ds.Tables.Count == 0 ? null : ds;
+
+        int minRow = pageSize * (curPage - 1);
+        int maxRow = pageSize * curPage;
+
+        Repeater1.DataSource = ds.Tables.Count == 0 ? null : GetCurPageDate(ds.Tables[0], minRow, maxRow);
         Repeater1.DataBind();
     }
 
+    private DataTable GetCurPageDate (DataTable dt, int minRow, int maxRow)
+    {
+        List<PriceInfoList> priceInfos = new List<PriceInfoList>();
+        int count = dt.Rows.Count > maxRow ? maxRow : dt.Rows.Count;
+
+        for (int i = minRow; i < count; i++)
+        {
+            PriceInfoList flowerList = new PriceInfoList() {
+                Id = (int)dt.Rows[i]["id"],
+                bjName = dt.Rows[i]["bjName"].ToString(),
+            };
+            priceInfos.Add(flowerList);
+        }
+
+        return FunctionModel.ToDataTable(priceInfos);
+    }
 
     #region 第一页
     protected void first_Click (object sender, EventArgs e)
