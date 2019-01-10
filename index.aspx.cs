@@ -25,7 +25,6 @@ public partial class index : System.Web.UI.Page
         }
         if (!IsPostBack)
         {
-            string a = ResolveClientUrl("~/img/7N3Qvu2.png");
             lblCurrentPage.Text = "1"; // 初始化页数
             Query();
         }

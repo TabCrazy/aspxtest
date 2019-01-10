@@ -41,14 +41,14 @@ public partial class addQuotation : System.Web.UI.Page
             string date = txt_rq.Value;
         }
         SetMC();
-        //if (!IsPostBack)
-        //{
-        //    Query();
-        //}
-        if (!string.IsNullOrEmpty(Request.QueryString["id"]))  // 编辑的时候不允许修改下拉列表
+        if (!IsPostBack)
         {
-            drp1.Enabled = false;
-            this.txt_rq.Attributes.Add("ReadOnly", "true");
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]))  // 编辑的时候不允许修改下拉列表
+            {
+                drp1.Enabled = false;
+                Query();
+                this.txt_rq.Attributes.Add("ReadOnly", "true");
+            }
         }
     }
 
