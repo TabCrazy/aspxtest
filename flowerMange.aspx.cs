@@ -113,7 +113,7 @@ public partial class flowerMange : System.Web.UI.Page
                 Id = (int)dt.Rows[i]["id"],
                 mc = dt.Rows[i]["mc"].ToString(),
                 tp = dt.Rows[i]["tp"].ToString(),
-                gg = dt.Rows[i]["id"].ToString(),
+                gg = dt.Rows[i]["gg"].ToString(),
             };
             flowerLists.Add(flowerList);
         }
